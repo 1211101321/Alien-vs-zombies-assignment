@@ -17,7 +17,7 @@ List all the features completed.
 
 List all the features not yet done. Remove this section if there is no incomplete requirements.
 
-1. Alien Movement (Currently, still got error)
+1. Alien Movement (Currently, there is still errors)
 2. Rocks
 3. Pods
 4. Zombies
