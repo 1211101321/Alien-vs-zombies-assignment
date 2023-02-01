@@ -12,6 +12,7 @@
 #include <iostream>
 using namespace std;
 
+// Game commands
 void helpCommand()
 {
     cout << "Commands" << endl;

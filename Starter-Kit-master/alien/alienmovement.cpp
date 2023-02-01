@@ -1,5 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <cstdlib> // for system()
+#include <ctime>   // for time() in srand( time(NULL) );
+#include <iomanip>
 #include "alienmovement.h"
 namespace alien
 {
@@ -58,4 +62,52 @@ namespace alien
             direction = (direction + 1) % 4; // turn right
         }
     };
+}
+
+int main () {
+
+//The place where Alien Character at the center of board
+Board[Y][X] = 'A';
+
+//Aliens commands to move
+Alien a;
+    char c = 'A';
+    string input;
+    while (true)
+    {
+        getline(cin, input);
+        for (char c : input)
+        {
+            if (c == 'up')
+            {
+                a.moveUp();
+                
+            }
+            else if (c == 'down')
+            {
+                a.moveDown();
+            }
+            else if (c == 'left')
+            {
+                a.moveLeft();
+            }
+            else if (c == 'right')
+            {
+                a.moveRight();
+            }
+        }
+
+        // Clear the board and place the character at the new position
+
+        for (int i = 0; i < dimY; i++)
+        {
+            for (int j = 0; j < dimX; j++)
+            {
+                cout << Board::map_[i][j] = '|';
+            }
+        }
+        
+        Board[Y][X] = 'A';
+    }
+return 0;
 }
