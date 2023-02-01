@@ -10,44 +10,40 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
 List all the features completed.
 
-1. Cool Feature #1
-2. Cool Feature #2
-3. *add more*
+1. Board generation
+2. Help commands
 
 ### To Do
 
 List all the features not yet done. Remove this section if there is no incomplete requirements.
 
-1. Rocks
-2. Pods
-3. Health
-4. Damage
-
-## Additional Features
-
-Describe the additional features that has been implemented.
+1. Alien Movement (Currently, still got error)
+2. Rocks
+3. Pods
+4. Zombies
+5. Health
+6. Damage
 
 ## Contributions
 
 List down the contribution of each group members.
 
-For example:
+Mohammad Zafran bin Mohd Anuar
 
-### Tony Stark
+1. Created gameboard.
+2. Spawn Alien in the center of the gameboard.
 
-1. Randomly generate game board.
-2. *add more*
+Ahmad Danial bin Ahmad Fauzi
 
-### Steve Rogers
+1. Created helpCommand.
+2. Edited alienmovement header file.
+3. Prepared Documentation for Part 1 of the assignment.
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+Nur Alya Nabilah Binti MD.Naser
 
-### Dr. Strange
-
-1. Implement all game objects.
-2. *add more*
+1. Attempted to create alienmovement.
+2. Split alienmovement into header and the main file.
 
 ## Problems Encountered & Solutions
 
-Describe the problems encountered and provide the solutions / plan for the solutions.
+Alien movement and zombie generation still has an error.
