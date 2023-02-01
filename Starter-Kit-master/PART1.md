@@ -28,7 +28,7 @@ List all the features not yet done. Remove this section if there is no incomplet
 
 List down the contribution of each group members.
 
-Mohammad Zafran bin Mohd Anuar
+Muhammad Zafran bin Mohd Anuar
 
 1. Created gameboard.
 2. Spawn Alien in the center of the gameboard.
