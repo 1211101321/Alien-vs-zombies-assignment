@@ -1,6 +1,6 @@
 # Alien vs. Zombie
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+ [Video Demo](https://www.youtube.com/watch?v=_fCtw95FmJU).
 
 ## Compilation Instructions
 
