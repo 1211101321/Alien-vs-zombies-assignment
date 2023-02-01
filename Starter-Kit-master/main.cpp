@@ -43,5 +43,4 @@ int main()
         cout << "Command is Invalid. Enter 'help' for available commands.\n";
      }
     }
-    return 0;
 }
