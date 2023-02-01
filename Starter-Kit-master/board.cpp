@@ -17,7 +17,12 @@ public:
     }
 };
 
-void spawnZombies(int numofZombies, int dimX_, int dimY_, vector<vector<char>> &map_)
+///////////////////////////////////////////////////////////////////////////////////////////////
+// code is supposed to randomly positon the zombies on the board after inputting their number,
+// some characters will be replaced but the zombies will appear on the board
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/* void spawnZombies(int numofZombies, int dimX_, int dimY_, vector<vector<char>> &map_)
 {
 
     for (int i = 0; i <= numofZombies; i++)
@@ -26,7 +31,8 @@ void spawnZombies(int numofZombies, int dimX_, int dimY_, vector<vector<char>> &
         int y = rand() % dimY_;
         map_[y][x] = 'Z';
     }
-}
+} */
+
 class Board
 {
 private:
@@ -41,17 +47,15 @@ public:
     void display() const;
 };
 
-
-
 Board::Board()
 {
     dimX_ = 0;
     dimY_ = 0;
     numofZombies = 0;
     init(dimX_, dimY_);
-    cout << "Enter the number of zombies you want to spawn: " << endl;
+    cout << "Enter the number of zombies you want to spawn: " << endl; //request how many zombies you want inputted
     cin >> numofZombies;
-    spawnZombies(numofZombies, dimX_, dimY_, map_);
+    // spawnZombies(numofZombies, dimX_, dimY_, map_);
 }
 
 void Board::init(int dimX, int dimY)
@@ -60,9 +64,9 @@ void Board::init(int dimX, int dimY)
         return;
     dimX_ = dimX;
     dimY_ = dimY;
-    char objects[] = {' ', ' ', ' ', ' ', 'p', 'h', 'r', '^', 'v', '>', '<', ' ', ' ', ' '};
+    char objects[] = {' ', ' ', ' ', ' ', 'p', 'h', 'r', '^', 'v', '>', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     // char zombies[];
-    int noOfObjects = 14; // number of objects in the objects array
+    int noOfObjects = 18; // number of objects in the objects array
 
     // create dynamic 2D array using vector
     map_.resize(dimY_); // create empty rows
@@ -80,8 +84,10 @@ void Board::init(int dimX, int dimY)
             map_[i][j] = objects[objNo];
         }
     }
-
-    int centerX = dimX_ / 2; // code that will place the Alien in the center of the board
+    //////////////////////////////////////////////////////////////
+    // code that will place the Alien in the center of the board
+    //////////////////////////////////////////////////////////////
+    int centerX = dimX_ / 2; 
     int centerY = dimY_ / 2;
     if (dimX_ % 2 == 0)
         centerX = centerX - 1;
@@ -91,7 +97,7 @@ void Board::init(int dimX, int dimY)
     if (centerX >= dimX_ || centerY >= dimY_)
         return;
     map_[centerY][centerX] = 'A';
-    spawnZombies(numofZombies, dimX_, dimY_, map_);
+    // spawnZombies(numofZombies, dimX_, dimY_, map_);
 }
 
 void Board::display() const
@@ -166,11 +172,9 @@ int main()
 
     Board board;
     board.init(dimX, dimY);
-    Zombie zombie;
-    zombie.zombieInput();
-    spawnZombies(zombie.numofZombies, dimX, dimY, board.map_);
+    // Zombie zombie;
+    // zombie.zombieInput();
+    // spawnZombies(int numofZombies, int dimX_, int dimY_, vector<vector<char>> &map_);
     board.display();
     return 0;
-
-   
 }
