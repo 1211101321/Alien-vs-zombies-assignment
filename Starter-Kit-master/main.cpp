@@ -29,12 +29,12 @@ int main()
 {
     cout << "Assignment (Part 1)" << endl;
     cout << "Let's Get Started!" << endl;
-    string helpinput;
+    string commandinput;
     while (true)
     {
      cout << "Enter a command:\n";
-     cin >> helpinput;
-     if(helpinput == "help")
+     cin >> commandinput;
+     if(commandinput == "help")
      {
         helpCommand(); break;
      }
