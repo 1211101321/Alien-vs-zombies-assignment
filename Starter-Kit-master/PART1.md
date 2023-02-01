@@ -36,13 +36,11 @@ Mohammad Zafran bin Mohd Anuar
 Ahmad Danial bin Ahmad Fauzi
 
 1. Created helpCommand.
-2. Edited alienmovement header file.
-3. Prepared Documentation for Part 1 of the assignment.
+2. Prepared Documentation for Part 1 of the assignment.
 
 Nur Alya Nabilah Binti MD.Naser
 
 1. Attempted to create alienmovement.
-2. Split alienmovement into header and the main file.
 
 ## Problems Encountered & Solutions
 
