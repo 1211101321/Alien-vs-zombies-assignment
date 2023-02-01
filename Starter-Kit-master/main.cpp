@@ -8,11 +8,9 @@
 // Phones: 0183834854 | 0178714669 | 0167859895
 // *********************************************************
 
-#include "pf/helper.h"
 #include <iostream>
 using namespace std;
 
-// Game commands
 void helpCommand()
 {
     cout << "Commands" << endl;
@@ -31,5 +29,19 @@ int main()
 {
     cout << "Assignment (Part 1)" << endl;
     cout << "Let's Get Started!" << endl;
-    pf::Pause();
+    string helpinput;
+    while (true)
+    {
+     cout << "Enter a command:\n";
+     cin >> helpinput;
+     if(helpinput == "help")
+     {
+        helpCommand(); break;
+     }
+    else
+     {
+        cout << "Command is Invalid. Enter 'help' for available commands.\n";
+     }
+    }
+    return 0;
 }
