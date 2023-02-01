@@ -4,7 +4,6 @@
 #include <cstdlib> // for system()
 #include <ctime>   // for time() in srand( time(NULL) );
 #include <iomanip>
-#include "alienmovement.h"
 namespace alien
 {
     class Alien
