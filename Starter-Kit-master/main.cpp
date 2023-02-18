@@ -252,8 +252,7 @@ public:
 
 int main()
 {
-
-    cout << "Assignment (Part 1)" << endl;
+    cout << "Assignment" << endl;
     cout << "Let's Get Started!" << endl;
     system("pause");
     int dimX, dimY, numofZombies;
@@ -269,11 +268,6 @@ int main()
     Board board;
     board.init(dimX, dimY);
     board.display();
-}
-int main()
-{
-    cout << "Assignment (Part 1)" << endl;
-    cout << "Let's Get Started!" << endl;
     string commandinput;
     while (true)
     {
@@ -288,20 +282,4 @@ int main()
         cout << "Command is Invalid. Enter 'help' for available commands.\n";
      }
     }
-    cout << "Assignment (Part 1)" << endl;
-    cout << "Let's Get Started!" << endl;
-    system("pause");
-    int dimX, dimY, numofZombies;
-    srand(time(NULL));
-    cout << "Enter the dimensions of the board" << endl;
-    cout << "Number of columns X:" << endl;
-    cin >> dimX; // This allows us to input the number of columns on the board
-    cout << "Number of rows Y:" << endl;
-    cin >> dimY; // This allows us to input the number of rows on the board
-                 //  The board dimension would have to be in odd integers since the alien spawns in the center of the board
-    cout << "Enter the number of zombies: " << endl;
-    cin >> numofZombies;
-    Board board;
-    board.init(dimX, dimY);
-    board.display();
 }
