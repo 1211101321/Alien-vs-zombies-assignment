@@ -254,7 +254,6 @@ int main()
 {
     cout << "Assignment" << endl;
     cout << "Let's Get Started!" << endl;
-    system("pause");
     int dimX, dimY, numofZombies;
     srand(time(NULL));
     cout << "Enter the dimensions of the board" << endl;
