@@ -39,4 +39,4 @@ For example:
 
 ## Problems Encountered & Solutions
 
-Segmentation Fault
+Alien movement issue.
