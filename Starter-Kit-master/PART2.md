@@ -33,8 +33,9 @@ For example:
 
 ### NUR ALYA NABILAH BINTI MD.NASER
 
-1. Implement all game objects.
-2. *add more*
+1. Making introduction on Alien vs Game
+2. Implement all game objects.
+3. Create alien class and movements
 
 ## Problems Encountered & Solutions
 
