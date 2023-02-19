@@ -317,7 +317,7 @@ void loadCommand()
         }
         inputFile.close();
     }
-    
+
     else 
     {
         cout << "Error: Unable to open file for reading" << endl;
@@ -379,7 +379,7 @@ int main()
 
             while (dimY% 2 == 0)
            {
-                cout << "Error, value must be an odd number: ";
+                cout << "Error, value must be an odd number: " << endl;
                 cin >> dimY;
            }
             cout << "Number of Columns: ";
@@ -387,7 +387,7 @@ int main()
 
             while (dimX % 2 == 0)
            { 
-            cout << "Error, value must be an odd number: ";
+            cout << "Error, value must be an odd number: " << endl;
             cin >> dimX;
            }
 
@@ -421,26 +421,31 @@ int main()
      if(commandinput == "help")
      {
         helpCommand();
+        cout << endl;
      }
 
      else if(commandinput == "save")
      {
         saveCommand();
+        cout << endl;
      }
 
      else if(commandinput == "load")
      {
         loadCommand();
+        cout << endl;
      }
 
      else if(commandinput == "quit")
      {
         quitCommand();
+        cout << endl;
      }
 
      else
      {
         cout << "Command is Invalid. Enter 'help' for available commands.\n";
+        cout << endl;
      }
     } 
 }
