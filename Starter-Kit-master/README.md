@@ -12,6 +12,11 @@ For example:
 g++ main.cpp
 .\main.exe
 ```
+## User Manual
+
+To start there will be an option that will allow you to play with default settings or user based settings
+
+Default board dimension would be 
 
 ## Progress Log
 
