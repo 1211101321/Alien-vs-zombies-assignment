@@ -11,8 +11,8 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 List all the features completed.
 
 1. Board
-2. Objects on board
-3. Help Commands
+2. Default game settings
+3. help and quit function (save and load nearly done)
 
 
 ## Contributions
@@ -23,19 +23,19 @@ For example:
 
 ### MUHAMMAD ZAFRAN BIN MOHD ANUAR
 
-1. Randomly generate game board.
-2. Game Objects on the board (No functions)
+1. Improved Game Board.
+2. Added Load function.
+3. Edited the user manual.
 
 ### AHMAD DANIAL BIN AHMAD FAUZI
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+1. Added default game settings.
+2. Added Save and Quit function.
 
 ### NUR ALYA NABILAH BINTI MD.NASER
 
-1. Making introduction on Alien vs Game
-2. Implement all game objects.
-3. Create alien class and movements
+1. Create Alien class and fixed error in the alien movement.
+2. Finished the documentation.
 
 ## Problems Encountered & Solutions
 
