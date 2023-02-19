@@ -375,11 +375,11 @@ int main()
             cout << "Settings" << endl;
             cout << "------------" << endl;
             cout << "Number of Rows: ";
-            cin >> dimY;;
+            cin >> dimY;
 
             while (dimY% 2 == 0)
            {
-                cout << "Error, value must be an odd number: " << endl;
+                cout << "Error, value must be an odd number: " << endl; //to check if it is odd or even
                 cin >> dimY;
            }
             cout << "Number of Columns: ";
@@ -387,11 +387,11 @@ int main()
 
             while (dimX % 2 == 0)
            { 
-            cout << "Error, value must be an odd number: " << endl;
+            cout << "Error, value must be an odd number: " << endl; //to check if it is odd or even 
             cin >> dimX;
            }
 
-            cout << "Enter the number of zombies you want to spawn: " << endl; //request how many zombies you want inputted
+            cout << "Enter the number of zombies you want to spawn: " << endl; //request users how many zombies they want to spawn
             cin >> numofZombies;
             break;
         }
