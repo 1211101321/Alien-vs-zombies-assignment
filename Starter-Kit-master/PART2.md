@@ -17,10 +17,6 @@ List all the features completed.
 
 ## Contributions
 
-List down the contribution of each group members.
-
-For example:
-
 ### MUHAMMAD ZAFRAN BIN MOHD ANUAR
 
 1. Improved Game Board.
