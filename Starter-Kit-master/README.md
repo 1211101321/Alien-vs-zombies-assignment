@@ -1,7 +1,5 @@
 # Alien vs. Zombie
 
- [Video Demo](https://www.youtube.com/watch?v=_fCtw95FmJU).
-
 ## Compilation Instructions
 
 Provide instructions on how to compile your program, especially when it is non-trivial.
