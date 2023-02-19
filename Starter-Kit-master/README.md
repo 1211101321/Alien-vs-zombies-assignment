@@ -21,6 +21,9 @@ Board Settings
 
 -By selecting "y" wwe will be able to change the dimensions of the board by entering the number of rows and columns.
 
+![image](https://user-images.githubusercontent.com/123632680/219951327-933761b5-a08d-4cac-bc9e-ed6b9cba1fb9.png)
+
+
 Help Commands
 
 -There are several commands that we can review by using the help command.
