@@ -16,7 +16,7 @@
 #include <iomanip> // for setw()
 using namespace std;
 
-class Alien
+/*class Alien
     {
 
     public:
@@ -122,7 +122,118 @@ class Alien
         private:
         int dimX_, dimY_, x, y, direction, centerX_, centerY_;
         std::vector<std::vector<char>> map_;
-    };
+    }; */
+
+    class Alien
+{
+private:
+    int dimX_, dimY_, x_, y_, direction_, centerX_, centerY_;
+    // direction facing (0-up, 1-right, 2-down, 3-left)
+    std::vector<std::vector<char>> map_;
+
+public:
+    Alien(int dimX, int dimY)
+    {
+        dimX_ = dimX;
+        dimY_ = dimY;
+        map_ = std::vector<std::vector<char>>(dimY_, std::vector<char>(dimX_, ' '));
+
+        centerX_ = dimX_ / 2; // code that will place the Alien in the center of the board
+        centerY_ = dimY_ / 2;
+        if (dimX_ % 2 == 0)
+            centerX_ = centerX_ - 1;
+        if (dimY_ % 2 == 0)
+            centerY_ = centerY_ - 1;
+
+        x_ = centerX_;
+        y_ = centerY_;
+        direction_ = 0;
+        if (centerX_ >= dimX_ || centerY_ >= dimY_)
+            return;
+        map_[centerY_][centerX_] = 'A';
+    }
+
+    // position on the board
+    int getDirection() const { return direction_; } // direction facing (0-up, 1-right, 2-down, 3-left)
+    int getX() const { return x_; }
+    int getY() const { return y_; }
+
+    bool operator==(const char &c)
+    {
+        return c == 'A';
+    }
+
+    void moveUp()
+    {
+        y_--; // move one step up
+    }
+
+    void moveDown()
+    {
+        y_++; // move one step down
+    }
+
+    void moveLeft()
+    {
+        x_--; // move left
+    }
+
+    void moveRight()
+    {
+        x_++; // move right
+    }
+
+    void turnLeft()
+    {
+        direction_ = (direction_ + 3) % 4; // turn left
+    }
+
+    void turnRight()
+    {
+        direction_ = (direction_ + 1) % 4; // turn right
+    }
+
+    bool move(int dimX, int dimY)
+    {
+        // calculate new coordinates
+        int newX = x_;
+        int newY = y_;
+        if (direction_ == 0)
+            newY--;
+        else if (direction_ == 1)
+            newX++;
+        else if (direction_ == 2)
+            newY++;
+        else if (direction_ == 3)
+            newX--;
+
+        // check if new coordinates are within bounds of the board
+        if (newX < 0 || newX >= dimX || newY < 0 || newY >= dimY)
+            return false;
+
+        // move alien
+        map_[y_][x_] = ' ';
+        x_ = newX;
+        y_ = newY;
+        map_[y_][x_] = 'A';
+
+        return true;
+    }
+    void executeCommand(const std::string& command)
+{
+    if (command == "u") {
+        moveUp();
+    } else if (command == "d") {
+        moveDown();
+    } else if (command == "l") {
+        moveLeft();
+    } else if (command == "r") {
+        moveRight();
+    } else {
+        std::cout << "Invalid command" << std::endl;
+    }
+}
+};
 
 class Zombie
 {
@@ -294,8 +405,37 @@ void helpCommand()
 
 int main()
 {
-    cout << "Assignment" << endl;
-    cout << "Let's Get Started!" << endl;
+    // Greeting message
+    cout << "      ___           ___           ___           ___     " << endl;
+    cout << "     /\\  \\         /\\__\\         /\\__\\         /\\__\\    " << endl;
+    cout << "    /::\\  \\       /::|  |       /:/  /        /::|  |   " << endl;
+    cout << "   /:/\\:\\  \\     /:|:|  |      /:/__/        /:|:|  |   " << endl;
+    cout << "  /:/  \\:\\  \\   /:/|:|  |__   /::\\__\\____   /:/|:|  |__ " << endl;
+    cout << " /:/__/ \\:\\__\\ /:/ |:| /\\__\\ /:/\\:::::\\__\\ /:/ |:| /\\__\\" << endl;
+    cout << " \\:\\  \\  \\/__/ \\/__|:|/:/  / \\/_|:|~~|~    \\/__|:|/:/  /" << endl;
+    cout << "  \\:\\  \\            |:/:/  /     |:|  |          |:/:/  / " << endl;
+    cout << "   \\:\\  \\           |::/  /      |:|  |          |::/  /  " << endl;
+    cout << "    \\:\\__\\          /:/  /       |:|  |          /:/  /   " << endl;
+    cout << "     \\/__/         /:/  /        \\|__|         /:/  /    " << endl;
+    cout << "                   \\/__/                       \\/__/     " << endl;
+    cout << endl;
+    cout << "Welcome to Alien vs Zombie!" << endl;
+
+    // Option to play the game
+    cout << "Do you want to play? (y/n): ";
+    char choice;
+    cin >> choice;
+
+    // Process user choice
+    if (choice == 'y' || choice == 'Y') {
+        cout << endl << "Great! Let's get started." << endl;
+        // Call function to start the game
+    } else if (choice == 'n' || choice == 'N') {
+        cout << endl << "Maybe next time. Goodbye!" << endl;
+    } else {
+        cout << endl << "Invalid choice. Please enter 'y' or 'n'." << endl;
+    }
+
     cout << "Do you want to play with default settings? " <<endl;
     
     int dimX, dimY;
@@ -320,8 +460,11 @@ int main()
     string input;
     while (true)
     {
-        cout << "Enter commands (u for up, d for down, l for left, r for right): ";
+        cout << "Enter commands : ";
         getline(cin, input);
+        std::string command;
+        std::cin >> command;
+        a.executeCommand(command);
         for (char c : input)
         {
             if (c == 'u')
@@ -345,8 +488,9 @@ int main()
                 break;
             }
         }
+        std::cout << "Alien position: (" << a.getX() << ", " << a.getY() << ")" << std::endl;
 
-        a.printMap();
+        //a.printMap();
     }
     return 0;
 }
