@@ -29,10 +29,14 @@ Help Commands
 Save Game
  We can save game by typing in "save" when the programm ask for a command to be entered.
  The data will be saved.
+ ![image](https://user-images.githubusercontent.com/123632680/219943507-31007b79-65e5-4e9a-a9de-f1770e06cac7.png)
+ 
  The data can also be loaded if "load" is entered
  
 Quit Command
  This command will ask to end the game once user enters "quit" when a commannd is asked.
+ ![image](https://user-images.githubusercontent.com/123632680/219943525-366efd04-4543-470a-935c-67b2d69f743f.png)
+
  if "y" is entered the program stops
  if "n" is entered the program keeps going
  
