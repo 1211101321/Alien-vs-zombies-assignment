@@ -15,12 +15,11 @@ g++ main.cpp
 ## User Manual
 
 Board Settings
- To start there will be an option that will allow you to play with default settings or user based settings.
+1. To start there will be an option that will allow you to play with default settings or user based settings.
+2.Default board dimension would be 11 rows 9 Columns, The Alien will always spawn in the center of the board.
+![image](https://user-images.githubusercontent.com/123632680/219942332-3de00e6f-02f6-4882-9df1-eecbe951d181.png)
 
- Default board dimension would be 11 rows 9 Columns, The Alien will always spawn in the center of the board.
- ![image](https://user-images.githubusercontent.com/123632680/219942332-3de00e6f-02f6-4882-9df1-eecbe951d181.png)
-
- By selecting "y" wwe will be able to change the dimensions of the board.
+By selecting "y" wwe will be able to change the dimensions of the board.
 
 Help Commands
  There are several commands that we can review by using the help command.
