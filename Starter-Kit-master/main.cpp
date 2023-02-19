@@ -14,9 +14,10 @@
 #include <cstdlib> // for system()
 #include <ctime>   // for time() in srand( time(NULL) );
 #include <iomanip> // for setw()
+#include <fstream>
 using namespace std;
 
-/*class Alien
+class Alien
     {
 
     public:
@@ -122,118 +123,7 @@ using namespace std;
         private:
         int dimX_, dimY_, x, y, direction, centerX_, centerY_;
         std::vector<std::vector<char>> map_;
-    }; */
-
-    class Alien
-{
-private:
-    int dimX_, dimY_, x_, y_, direction_, centerX_, centerY_;
-    // direction facing (0-up, 1-right, 2-down, 3-left)
-    std::vector<std::vector<char>> map_;
-
-public:
-    Alien(int dimX, int dimY)
-    {
-        dimX_ = dimX;
-        dimY_ = dimY;
-        map_ = std::vector<std::vector<char>>(dimY_, std::vector<char>(dimX_, ' '));
-
-        centerX_ = dimX_ / 2; // code that will place the Alien in the center of the board
-        centerY_ = dimY_ / 2;
-        if (dimX_ % 2 == 0)
-            centerX_ = centerX_ - 1;
-        if (dimY_ % 2 == 0)
-            centerY_ = centerY_ - 1;
-
-        x_ = centerX_;
-        y_ = centerY_;
-        direction_ = 0;
-        if (centerX_ >= dimX_ || centerY_ >= dimY_)
-            return;
-        map_[centerY_][centerX_] = 'A';
-    }
-
-    // position on the board
-    int getDirection() const { return direction_; } // direction facing (0-up, 1-right, 2-down, 3-left)
-    int getX() const { return x_; }
-    int getY() const { return y_; }
-
-    bool operator==(const char &c)
-    {
-        return c == 'A';
-    }
-
-    void moveUp()
-    {
-        y_--; // move one step up
-    }
-
-    void moveDown()
-    {
-        y_++; // move one step down
-    }
-
-    void moveLeft()
-    {
-        x_--; // move left
-    }
-
-    void moveRight()
-    {
-        x_++; // move right
-    }
-
-    void turnLeft()
-    {
-        direction_ = (direction_ + 3) % 4; // turn left
-    }
-
-    void turnRight()
-    {
-        direction_ = (direction_ + 1) % 4; // turn right
-    }
-
-    bool move(int dimX, int dimY)
-    {
-        // calculate new coordinates
-        int newX = x_;
-        int newY = y_;
-        if (direction_ == 0)
-            newY--;
-        else if (direction_ == 1)
-            newX++;
-        else if (direction_ == 2)
-            newY++;
-        else if (direction_ == 3)
-            newX--;
-
-        // check if new coordinates are within bounds of the board
-        if (newX < 0 || newX >= dimX || newY < 0 || newY >= dimY)
-            return false;
-
-        // move alien
-        map_[y_][x_] = ' ';
-        x_ = newX;
-        y_ = newY;
-        map_[y_][x_] = 'A';
-
-        return true;
-    }
-    void executeCommand(const std::string& command)
-{
-    if (command == "u") {
-        moveUp();
-    } else if (command == "d") {
-        moveDown();
-    } else if (command == "l") {
-        moveLeft();
-    } else if (command == "r") {
-        moveRight();
-    } else {
-        std::cout << "Invalid command" << std::endl;
-    }
-}
-};
+    };
 
 class Zombie
 {
@@ -282,9 +172,7 @@ Board::Board()
     dimY_ = 0;
     numofZombies = 0;
     init(dimX_, dimY_);
-    cout << "Enter the number of zombies you want to spawn: " << endl; //request how many zombies you want inputted
-    cin >> numofZombies;
-    //spawnZombies(numofZombies, dimX_, dimY_, map_);
+    // spawnZombies(numofZombies, dimX_, dimY_, map_);
 }
 
 void Board::init(int dimX, int dimY)
@@ -387,8 +275,6 @@ void Board::display() const
          << endl;
 }
 
-
-
 void helpCommand()
 {
     cout << "Commands" << endl;
@@ -403,94 +289,158 @@ void helpCommand()
     cout << "9. quit  - Quit the game." << endl;
 }
 
+void saveCommand() 
+{
+    ofstream outputFile("alienvszombiedata.txt");
+    if (outputFile.is_open()) 
+    {
+        outputFile << "Current board data" << endl;
+        outputFile.close();
+        cout << "Data saved successfully" << endl;
+    }
+
+    else 
+    {
+        cout << "Error: Unable to open file for writing" << endl;
+    }
+}
+
+void loadCommand() 
+{
+    ifstream inputFile("alienvszombiedata.txt");
+
+    if (inputFile.is_open()) 
+    {
+        string data;
+        while (getline(inputFile, data)) {
+            cout << data << endl;
+        }
+        inputFile.close();
+    }
+    
+    else 
+    {
+        cout << "Error: Unable to open file for reading" << endl;
+    }
+}
+
+void quitCommand()
+{
+   while (true)
+   {
+    string escape;
+    cout << "Are you sure you want to quit? (y/n)?: ";
+    cin >> escape;
+    if (escape == "y" || escape == "Y")
+           {
+            cout << "Thank you for playing! Goodbye!";
+            exit (0);
+           }
+
+    else if (escape == "n" || escape == "N")
+            {
+              break;
+            }
+
+    else
+        {
+            cout << "Invalid Input" << endl;  
+        }
+   }    
+}
+
 int main()
 {
-    // Greeting message
-    cout << "      ___           ___           ___           ___     " << endl;
-    cout << "     /\\  \\         /\\__\\         /\\__\\         /\\__\\    " << endl;
-    cout << "    /::\\  \\       /::|  |       /:/  /        /::|  |   " << endl;
-    cout << "   /:/\\:\\  \\     /:|:|  |      /:/__/        /:|:|  |   " << endl;
-    cout << "  /:/  \\:\\  \\   /:/|:|  |__   /::\\__\\____   /:/|:|  |__ " << endl;
-    cout << " /:/__/ \\:\\__\\ /:/ |:| /\\__\\ /:/\\:::::\\__\\ /:/ |:| /\\__\\" << endl;
-    cout << " \\:\\  \\  \\/__/ \\/__|:|/:/  / \\/_|:|~~|~    \\/__|:|/:/  /" << endl;
-    cout << "  \\:\\  \\            |:/:/  /     |:|  |          |:/:/  / " << endl;
-    cout << "   \\:\\  \\           |::/  /      |:|  |          |::/  /  " << endl;
-    cout << "    \\:\\__\\          /:/  /       |:|  |          /:/  /   " << endl;
-    cout << "     \\/__/         /:/  /        \\|__|         /:/  /    " << endl;
-    cout << "                   \\/__/                       \\/__/     " << endl;
-    cout << endl;
-    cout << "Welcome to Alien vs Zombie!" << endl;
-
-    // Option to play the game
-    cout << "Do you want to play? (y/n): ";
-    char choice;
-    cin >> choice;
-
-    // Process user choice
-    if (choice == 'y' || choice == 'Y') {
-        cout << endl << "Great! Let's get started." << endl;
-        // Call function to start the game
-    } else if (choice == 'n' || choice == 'N') {
-        cout << endl << "Maybe next time. Goodbye!" << endl;
-    } else {
-        cout << endl << "Invalid choice. Please enter 'y' or 'n'." << endl;
-    }
-
-    cout << "Do you want to play with default settings? " <<endl;
-    
-    int dimX, dimY;
+    cout << "Assignment" << endl;
+    cout << "Let's Get Started!" << endl;
+    int dimY = 11, dimX = 9;
+    int numofZombies = 1;
     srand(time(NULL));
-    cout << "Enter the dimensions of the board" << endl;
-    cout << "Number of columns X:" << endl;
-    cin >> dimX; // This allows us to input the number of columns on the board
-    cout << "Number of rows Y:" << endl;
-    cin >> dimY; // This allows us to input the number of rows on the board
-                 //  The board dimension would have to be in odd integers since the alien spawns in the center of the board
 
-    Board board;
-    board.init(dimX, dimY);
-    // Zombie zombie;
-    // zombie.zombieInput();
-    // spawnZombies(int numofZombies, int dimX_, int dimY_, vector<vector<char>> &map_);
-    cout << "Settings updated." << endl;
-    board.display();
+    char settings;
+    cout << "Default Game Settings" << endl;
+    cout << "-----------------------" << endl;
+    cout << "Board Rows     : " << dimY << endl;
+    cout << "Board Columns  : " << dimX << endl;
+    cout << "Zombie Count   : " << numofZombies << endl
+         << endl;
 
-
-    Alien a(dimX, dimY);
-    string input;
     while (true)
     {
-        cout << "Enter commands : ";
-        getline(cin, input);
-        std::string command;
-        std::cin >> command;
-        a.executeCommand(command);
-        for (char c : input)
-        {
-            if (c == 'u')
-            {
-                a.moveUp();
-            }
-            else if (c == 'd')
-            {
-                a.moveDown();
-            }
-            else if (c == 'l')
-            {
-                a.moveLeft();
-            }
-            else if (c == 'r')
-            {
-                a.moveRight();
-            }
-            else
-            {
-                break;
-            }
-        }
-        std::cout << "Alien position: (" << a.getX() << ", " << a.getY() << ")" << std::endl;
+        cout << "Do you wish to change the game settings? (y/n)?: ";
+        cin >> settings;
 
-        //a.printMap();
-    }
-    return 0;
+        if (settings == 'Y' || settings == 'y')
+        {
+            cout << "Settings" << endl;
+            cout << "------------" << endl;
+            cout << "Number of Rows: ";
+            cin >> dimY;;
+
+            while (dimY% 2 == 0)
+           {
+                cout << "Error, value must be an odd number: ";
+                cin >> dimY;
+           }
+            cout << "Number of Columns: ";
+            cin >> dimX;
+
+            while (dimX % 2 == 0)
+           { 
+            cout << "Error, value must be an odd number: ";
+            cin >> dimX;
+           }
+
+            cout << "Enter the number of zombies you want to spawn: " << endl; //request how many zombies you want inputted
+            cin >> numofZombies;
+            break;
+        }
+
+        else if (settings == 'n' || settings == 'N')
+        {
+            //continue to default board values
+            break;
+        }
+
+        else
+        {
+            cout << "Invalid Input" << endl; //back to loop and ask user to re-enter y/n
+        }
+    } 
+   
+    Board board;
+    board.init(dimX, dimY);
+    cout << "Settings updated." << endl << endl;
+    board.display();
+
+    string commandinput;
+    while (true)
+    {   
+     cout << "Enter a command:\n";
+     cin >> commandinput;
+     if(commandinput == "help")
+     {
+        helpCommand();
+     }
+
+     else if(commandinput == "save")
+     {
+        saveCommand();
+     }
+
+     else if(commandinput == "load")
+     {
+        loadCommand();
+     }
+
+     else if(commandinput == "quit")
+     {
+        quitCommand();
+     }
+
+     else
+     {
+        cout << "Command is Invalid. Enter 'help' for available commands.\n";
+     }
+    } 
 }
