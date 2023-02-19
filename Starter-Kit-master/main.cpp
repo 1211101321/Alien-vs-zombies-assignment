@@ -20,7 +20,7 @@ using namespace std;
 class Alien
     {
 
-    public:
+    public: 
         Alien(int dimX, int dimY)
         {
             dimX_ = dimX;
@@ -40,7 +40,7 @@ class Alien
             map_[centerY_][centerX_] = 'A';
         }
 
-        void moveUp()
+        void moveUp()//Alien Commands
         {
             y--;
         }
@@ -275,7 +275,7 @@ void Board::display() const
          << endl;
 }
 
-void helpCommand()
+void helpCommand() // The help commands
 {
     cout << "Commands" << endl;
     cout << "1. up    - Move up." << endl;
@@ -291,10 +291,10 @@ void helpCommand()
 
 void saveCommand() 
 {
-    ofstream outputFile("alienvszombiedata.txt");
+    ofstream outputFile("alienvszombiedata.txt"); //This will write data into a txt file
     if (outputFile.is_open()) 
     {
-        outputFile << "Current board data" << endl;
+        outputFile << "Current board progress" << endl;
         outputFile.close();
         cout << "Data saved successfully" << endl;
     }
@@ -329,7 +329,7 @@ void quitCommand()
    while (true)
    {
     string escape;
-    cout << "Are you sure you want to quit? (y/n)?: ";
+    cout << "Are you sure you want to quit? (y/n)?: "; //quit game commands that are self explanatory
     cin >> escape;
     if (escape == "y" || escape == "Y")
            {
@@ -358,7 +358,7 @@ int main()
     srand(time(NULL));
 
     char settings;
-    cout << "Default Game Settings" << endl;
+    cout << "Default Game Settings" << endl;//Default settings of the game 
     cout << "-----------------------" << endl;
     cout << "Board Rows     : " << dimY << endl;
     cout << "Board Columns  : " << dimX << endl;
@@ -367,7 +367,7 @@ int main()
 
     while (true)
     {
-        cout << "Do you wish to change the game settings? (y/n)?: ";
+        cout << "Do you wish to change the game settings? (y/n)?: "; //Changing game settings here
         cin >> settings;
 
         if (settings == 'Y' || settings == 'y')
@@ -375,7 +375,7 @@ int main()
             cout << "Settings" << endl;
             cout << "------------" << endl;
             cout << "Number of Rows: ";
-            cin >> dimY;
+            cin >> dimY;//entering the number of rows
 
             while (dimY% 2 == 0)
            {
@@ -383,7 +383,7 @@ int main()
                 cin >> dimY;
            }
             cout << "Number of Columns: ";
-            cin >> dimX;
+            cin >> dimX;//entering the number of columns
 
             while (dimX % 2 == 0)
            { 
@@ -420,23 +420,23 @@ int main()
      cin >> commandinput;
      if(commandinput == "help")
      {
-        helpCommand();
+        helpCommand(); //Commands that list out all commands
         cout << endl;
      }
 
-     else if(commandinput == "save")
+     else if(commandinput == "save") //Command that saves the game
      {
         saveCommand();
         cout << endl;
      }
 
-     else if(commandinput == "load")
+     else if(commandinput == "load") //Command that loads the game
      {
         loadCommand();
         cout << endl;
      }
 
-     else if(commandinput == "quit")
+     else if(commandinput == "quit") //Command that quits the game
      {
         quitCommand();
         cout << endl;
@@ -444,7 +444,7 @@ int main()
 
      else
      {
-        cout << "Command is Invalid. Enter 'help' for available commands.\n";
+        cout << "Command is Invalid. Enter 'help' for available commands.\n"; //This will appear when you type an invalid command
         cout << endl;
      }
     } 
